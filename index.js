@@ -12,22 +12,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.get('/news', async function (req, res) {
+app.get('/news', function (req, res) {
 
     const {q,page} = req.query;
 
     newsApi.v2.everything({
-                q: q ? `${q} AND UK` : "UK",
-                language: 'en',
-                sortBy: 'popu',
-                pageSize: 20,
-                page
-            }).then(response => {
-                res.send(response);
-            }).catch(e => {
-                console.log(e);
-                res.sendStatus(500);
-        });
+        q: q ? `${q} AND UK` : "UK",
+        language: 'en',
+        sortBy: 'popu',
+        pageSize: 20,
+        page
+    }).then(response => {
+        res.send(response);
+    }).catch(e => {
+        console.log(e);
+        res.sendStatus(500);
+    });
+});
+
+app.get("*", function (req, res) {
+    res.sendStatus(404);
 });
 
 app.listen(2000, () => {
