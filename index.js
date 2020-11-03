@@ -17,10 +17,10 @@ app.get('/news', async function (req, res) {
     const {q,page} = req.query;
 
     newsApi.v2.everything({
-            q: q ? `${q} AND UK` : "UK",
-            language: 'en',
-            sortBy: 'popu',
-            pageSize: 20,
+                q: q ? `${q} AND UK` : "UK",
+                language: 'en',
+                sortBy: 'popu',
+                pageSize: 20,
                 page
             }).then(response => {
                 res.send(response);
