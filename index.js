@@ -14,15 +14,17 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get('/news', function (req, res) {
 
-    const {q,page} = req.query;
+    const { q, page } = req.query;
 
-    newsApi.v2.everything({
+    const newsQuery = {
         q: q ? `${q} AND UK` : "UK",
         language: 'en',
-        sortBy: 'popu',
         pageSize: 20,
-        page
-    }).then(response => {
+        page: page || 1
+    };
+    console.log(newsQuery);
+
+    newsApi.v2.everything(newsQuery).then(response => {
         res.send(response);
     }).catch(e => {
         console.log(e);
