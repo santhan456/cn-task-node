@@ -34,6 +34,8 @@ app.get("*", function (req, res) {
     res.sendStatus(404);
 });
 
-app.listen(2000, () => {
-    console.log(`listening at http://localhost:${2000}`)
+const port = process.env.PORT || 2000;
+
+app.listen(port, () => {
+    console.log(`listening at http://localhost:${port}`)
 })
