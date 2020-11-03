@@ -31,5 +31,5 @@ app.get('/news', async function (req, res) {
 });
 
 app.listen(2000, () => {
-    console.log(`Example app listening at http://localhost:${2000}`)
+    console.log(`listening at http://localhost:${2000}`)
 })
