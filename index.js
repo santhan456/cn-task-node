@@ -16,18 +16,18 @@ app.get('/news', async function (req, res) {
 
     const {q,page} = req.query;
 
-  newsApi.v2.everything({
-    q: q ? `${q} AND UK` : "UK",
-    language: 'en',
-    sortBy: 'popu',
-    pageSize: 20,
-    page
-}).then(response => {
-        res.send(response);
-    }).catch(e => {
-        console.log(e);
-        res.sendStatus(500);
-    });
+    newsApi.v2.everything({
+            q: q ? `${q} AND UK` : "UK",
+            language: 'en',
+            sortBy: 'popu',
+            pageSize: 20,
+                page
+            }).then(response => {
+                res.send(response);
+            }).catch(e => {
+                console.log(e);
+                res.sendStatus(500);
+        });
 });
 
 app.listen(2000, () => {
